@@ -1,33 +1,165 @@
-// React is a JavaScript library for building user interfaces
-// react uses single page applications by updating the DOM dynamically via url routing
-// as apose to different templates for each  page
-// React uses a virtual DOM to improve performance by only updating the parts of the DOM that have changed
+import { useState } from 'react'
+import heroImg from './assets/hero.png'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import './App.css'
+import ButtonExample from "./ButtonExample.jsx";
 
-// by splitting the UI into independant reusable peices
-//each peice is placed inside a function or class that return JSX, these can be nested if so desired
-// JSX is a syntax extension for JavaScript that looks similar to HTML
-
-// components make up the visual layer of the application
-// each component can have its own state and props
-//when making compe
-
-// components go through a lifecycle of mounting, updating and unmounting
-//props are used to pass data from parent to child components
-import Student from './Student.jsx'
-import Card from './Card.jsx'
-import userGreeting from './conditionalrendering.jsx'
 function App() {
-    return (
-        <>
-            <Student name="John" age={20} isStudent={true} />
-            <Student name="Jane" age={22} isStudent={false} />
-            <Card ></Card>
-            <userGreeting></userGreeting>
-        </>
-    );
-    
+  const [count, setCount] = useState(0)
+  function handleClick() {
+    alert("You clicked the green button!");
+  }
+
+
+
+
+
+
+
+
+  return (
+    <>
+      <div>
+        <h1>Props & Conditional Rendering Example</h1>
+        <ButtonExample
+          className="green-button"
+          text="Click Me"
+          onClick={handleClick}
+        />
+      </div>
+      <div>
+        <h1>button 2</h1>
+        <ButtonExample
+          className="blue-button"
+          text="Click Me"
+          onClick={() => alert("You clicked the blue button!")}
+        />
+      </div>
+      <div>
+        <h1>button 3</h1>
+        <ButtonExample
+          className="red-button"
+          text="Click Me"
+          onClick={() => alert("You clicked the red button!")}
+        />
+      </div>
+      <div>
+        <h3>Logged In State:</h3>
+        <AuthButton isLoggedIn={true} />
+      </div>
+      <div>
+        <h3>Logged Out State:</h3>
+        <AuthButton isLoggedIn={false} />
+      </div>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get HELLO</h1>
+          <p>
+            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="ticks"></div>
+      <section id="spacer"></section>
+    </>
+  )
 }
 
-
-
-export default App;
+export default App
